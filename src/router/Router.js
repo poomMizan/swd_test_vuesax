@@ -18,6 +18,11 @@ const router = new Router({
           path: "starter",
           component: () => import("@/views/Starter"),
         },
+        // {
+        //   name: "Graph",
+        //   path: "/graph",
+        //   component: () => import("@/views/Graph"),
+        // },
         {
           name: "Alert",
           path: "/ui-elements/alert",

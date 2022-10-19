@@ -1,3 +1,4 @@
 module.exports = {
-  publicPath: "/test-nakrub/",
+  publicPath: "/swd-test/",
+  
 };

@@ -11,20 +11,55 @@
       </div>
     </td>
     <td>{{ data }}</td>
-    <td>{{ timestamp }}</td>
     <td>
-      <b-badge variant="danger" class="rounded-0">{{ data2 }}</b-badge>
+      {{ easyDateTime(dt) }}
+      <!-- {{ dt.toDateString() }} -->
     </td>
-    <!-- <td>46</td>
-    <td>356</td>
     <td>
-      <h5 class="mb-0">$2850.06</h5>
-    </td> -->
+      {{ data2 }}
+    </td>
   </tr>
 </template>
 <script>
 export default {
   name: "TableRow",
+  data() {
+    return {
+      dt: new Date(this.timestamp),
+      monthNames: [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ],
+    };
+  },
+  methods: {
+    easyDateTime(dt) {
+      return (
+        // dt.getHours() +
+        // ":" +
+        // // TODO เติม 0 หน้าหน้วยวินาที
+        // dt.getMinutes() +
+        // ":" +
+        // dt.getSeconds() +
+        // " / " +
+        dt.getDate() +
+        " " +
+        this.monthNames[dt.getMonth()] +
+        " " +
+        dt.getFullYear()
+      );
+    },
+  },
   props: {
     id: Number || String,
     data: Number || String,

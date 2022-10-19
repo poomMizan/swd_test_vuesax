@@ -2,26 +2,30 @@ export default [
   {
     id: "1",
     icon: "mdi mdi-view-dashboard",
-    title: "Dashboard",
+    // title: "Dashboard",
+    title: "Overview",
     to: "/starter",
   },
 
   {
     id: "2",
     icon: "mdi mdi-message-bulleted",
-    title: "Alert",
+    // title: "Alert",
+    title: "Report",
     to: "/ui-elements/alert",
   },
   {
     id: "4",
     icon: "mdi mdi-account-box",
-    title: "Avatar",
+    // title: "Avatar",
+    title: "Map",
     to: "/ui-elements/avatar",
   },
   {
     id: "5",
     icon: "mdi mdi-application",
-    title: "Badge",
+    // title: "Badge",
+    title: "Location",
     to: "/ui-elements/badge",
   },
   {

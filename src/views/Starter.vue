@@ -36,29 +36,30 @@
     <!-- ----------------------------------------------- -->
     <!-- end top cards -->
     <!-- ----------------------------------------------- -->
+
+    <!-- TODO graph here -->
+    <!-- TODO graph here -->
     <b-row>
-      <b-col cols="12" lg="8">
+      <b-col cols="12" lg="12">
         <b-card class="mb-4">
-          <h4 class="card-title">Sales Summary</h4>
+          <h4 class="card-title">Amount of data by date</h4>
           <SalesSummary />
         </b-card>
       </b-col>
-      <b-col cols="12" lg="4">
+      <b-col cols="12" lg="12">
         <b-card class="mb-4">
-          <h4 class="card-title">Sales Income</h4>
+          <h4 class="card-title">Amount of data by date</h4>
           <SalesIncome />
         </b-card>
       </b-col>
     </b-row>
+
     <!-- ----------------------------------------------- -->
     <!-- top selling products -->
     <!-- ----------------------------------------------- -->
     <b-card class="mb-4" no-body>
       <b-card-body>
         <h4 class="card-title">Top Selling Products</h4>
-        <h6 class="card-subtitle font-weight-normal text-muted">
-          Overview of Latest Month
-        </h6>
       </b-card-body>
       <SellingProduct />
     </b-card>
@@ -68,7 +69,7 @@
     <!-- ----------------------------------------------- -->
     <!-- cards row -->
     <!-- ----------------------------------------------- -->
-    <TopCards />
+    <!-- <TopCards /> -->
     <!-- ----------------------------------------------- -->
     <!-- end cards row -->
     <!-- ----------------------------------------------- -->
@@ -79,7 +80,7 @@
 import SalesSummary from "./dashboard-components/SalesSummary";
 import SalesIncome from "./dashboard-components/SalesIncome";
 import SellingProduct from "./dashboard-components/SellingProduct";
-import TopCards from "./dashboard-components/TopCards";
+// import TopCards from "./dashboard-components/TopCards";
 export default {
   name: "Starter",
   data: () => ({}),
@@ -87,7 +88,7 @@ export default {
     SalesSummary,
     SalesIncome,
     SellingProduct,
-    TopCards,
+    // TopCards,
   },
 };
 </script>

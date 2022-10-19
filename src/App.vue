@@ -8,9 +8,10 @@
 export default {
   name: "App",
   components: {},
-  mounted() {
+  beforeCreate() {
     // alert('fetchDTS');
     this.$store.dispatch("fetchDTS");
+    this.$store.dispatch("fetchGraphData");
   },
 };
 </script>
