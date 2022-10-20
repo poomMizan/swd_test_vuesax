@@ -1,17 +1,15 @@
 <template>
   <div class="table-responsive">
-    <div class="btn-grp ml-3">
+    <!-- <div class="btn-grp ml-3">
       <b-button variant="secondary rounded-pill ">List</b-button>
       <b-button variant="secondary rounded-pill">Calendar</b-button>
       <b-button variant="secondary rounded-pill">User</b-button>
-      <b-button variant="secondary rounded-pill" @click="toggleGraph"
-        >Graph</b-button
-      >
-    </div>
+      <b-button variant="secondary rounded-pill">Graph</b-button>
+    </div> -->
     <div class="bg-light m-3">
       <h4 class="m-2">List Table</h4>
     </div>
-    <table class="table v-middle text-nowrap bg-transparent">
+    <!-- <table class="table v-middle text-nowrap bg-transparent">
       <thead>
         <tr class>
           <th class="border-0" @click="log_state">ID</th>
@@ -28,20 +26,55 @@
           :data2="dt.data2"
         />
       </tbody>
-    </table>
+    </table> -->
+    <b-table
+      id="data-table"
+      :items="all_dts"
+      per-page="100"
+      :current-page="currentPage"
+      small
+      fixed
+    >
+      <template #cell(timestamp)="data">
+        {{ easyDateTime(data.value) }}
+      </template></b-table
+    >
+    <b-pagination
+      v-model="currentPage"
+      :total-rows="length"
+      :per-page="perPage"
+      aria-controls="data-table"
+      align="center"
+    ></b-pagination>
   </div>
 </template>
 <script>
-import TableRow from "../table-elements/TableRow.vue";
+// import TableRow from "../table-elements/TableRow.vue";
 // mport { mapState, mapActions } from "vuex";
 export default {
   name: "SellingProduct",
-  components: { TableRow },
+  // components: { TableRow },
   data() {
     return {
       // dts: [],
-      start: null,
-      end: -100,
+      // start: null,
+      // end: -100,
+      currentPage: 1,
+      perPage: 100,
+      monthNames: [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ],
     };
   },
   methods: {
@@ -51,49 +84,45 @@ export default {
       console.log("pages ", this.pages);
       // console.log("count 8 july = ", await this.countDate());
     },
-    countDate() {
-      // var count_08 = 0;
-      // for(let i = 0; i < this.dts.length; i++) {
-      //   let dt_stamp = this.dts[i].timestamp;
-      //   let dt_str = dt_stamp.substring(0,10);
-      //   console.log(dt_str.length);
-      //   if (dt_str == '2020-07-14') {
-      //     count_08++;
-      //   }
-      // }
-      // console.log(count_08);
-      // var arr_08 = this.all_dts.filter(
-      //   (dt) => dt.timestamp.substring(0, 10) == "2020-07-14"
-      // ).length;
-      // console.log(arr_08);
-
-      // this.all_dts.forEach(
-      //   (dt) =>
-      //     (counts[dt.timestamp.substring(0, 10)] =
-      //       (counts[dt.timestamp.substring(0, 10)] || 0) + 1)
-      // );
-      const counts = {};
-      this.all_dts.forEach((dt) => {
-        const dt_str = dt.timestamp.substring(0, 10);
-        counts[dt_str] = (counts[dt_str] || 0) + 1;
-      });
-      console.log(counts);
+    addZero(dt_number) {
+      if (dt_number < 10) {
+        return "0" + dt_number;
+      }
+      return dt_number;
     },
-    toggleGraph() {
-      // TODO ssss
+    easyDateTime(timestamp) {
+      let dt = new Date(timestamp);
+      return (
+        this.addZero(dt.getDate()) +
+        " " +
+        this.monthNames[dt.getMonth()] +
+        " " +
+        dt.getFullYear() +
+        " / " +
+        this.addZero(dt.getHours()) +
+        ":" +
+        // TODO เติม 0 หน้าหน้วยวินาที
+        this.addZero(dt.getMinutes()) +
+        ":" +
+        this.addZero(dt.getSeconds())
+      );
     },
   },
 
   computed: {
     all_dts() {
-      return this.$store.state.dts;
+      let dts = this.$store.state.dts;
+      // dts.forEach((dt) => {
+      //   dt.timeStamp = this.easyDateTime(new Date(dt.timeStamp));
+      // });
+      return dts;
     },
-    dts() {
-      if (this.start == null) {
-        return this.$store.state.dts.slice(this.end);
-      }
-      return this.$store.state.dts.slice(this.start, this.end);
-    },
+    // dts() {
+    //   if (this.start == null) {
+    //     return this.$store.state.dts.slice(this.end);
+    //   }
+    //   return this.$store.state.dts.slice(this.start, this.end);
+    // },
     pages() {
       return this.$store.state.dts.length / 100;
     },
