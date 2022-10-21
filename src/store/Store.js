@@ -8,8 +8,8 @@ const store = new Vuex.Store({
     Sidebar_drawer: false,
     LayoutType: "full-sidebar",
     SidebarColor: "white",
-    navbarColor: "primary",
-    logoColor: "white",
+    navbarColor: "secondary",
+    logoColor: "secondary",
 
     // data
     dts: [],
@@ -46,10 +46,10 @@ const store = new Vuex.Store({
         console.log("Unable to connect to API ", error);
       }
     },
-    async fetchGraphData({ commit, state }) {
+    fetchGraphData({ commit, state }) {
       // console.log("inside fetchGraphData start");
       const counts = {};
-      await state.dts.forEach((dt) => {
+      state.dts.forEach((dt) => {
         const dt_str = dt.timestamp.substring(0, 10);
         counts[dt.toDateString()] = (counts[dt_str] || 0) + 1;
       });
@@ -75,6 +75,15 @@ const store = new Vuex.Store({
       var graphData = Object.values(counts);
       return { graphLabels, graphData };
     },
+
+    getDataByDate(state) {
+      const counts = {};
+      state.dts.forEach((dt) => {
+        const dt_str = dt.timestamp.substring(0, 10);
+        counts[dt_str] = (counts[dt_str] || 0) + 1;
+      });
+      return counts;
+    },
   },
-});
+}); 
 export default store;

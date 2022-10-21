@@ -6,6 +6,19 @@
       class="p-0"
       :variant="navbarColor"
     >
+      <div class="d-none d-lg-block">
+        <input class="p-2" type="text" placeholder="Search here" />
+        <!-- BIconCardList, BIconCalendar4Range -->
+        <b-icon-card-list
+          class="h3 text-white align-middle ml-3"
+        ></b-icon-card-list>
+        <b-icon-calendar4-range
+          class="h4 text-white align-middle ml-4"
+        ></b-icon-calendar4-range>
+        <b-icon-calendar4-range
+          class="h4 text-white align-middle ml-4"
+        ></b-icon-calendar4-range>
+      </div>
       <div :class="`navbar-header d-block d-lg-none pl-3`">
         <LogoDark v-if="navbarColor == 'white'" />
         <LogoLight v-else />
@@ -17,10 +30,12 @@
       <!-- <b-navbar-toggle target="nav-collapse" class="mx-2 border-0"
         ><i class="mdi mdi-dots-horizontal"></i
       ></b-navbar-toggle> -->
+
       <b-collapse id="nav-collapse" is-nav class="">
         <!-- -----------------------------------------------------------
           Right aligned nav items
         ----------------------------------------------------------- -->
+
         <b-navbar-nav class="ml-auto">
           <b-nav-item-dropdown right no-caret>
             <template #button-content>
@@ -42,6 +57,7 @@
             <b-dropdown-item href="#">Something</b-dropdown-item>
             <b-dropdown-item href="#">Here</b-dropdown-item>
           </b-nav-item-dropdown>
+          <b class="mt-3 text-white font-weight-light">Hi, admin</b>
           <!-- -----------------------------------------------------------
             Profile Dropdown
           ----------------------------------------------------------- -->
@@ -75,7 +91,7 @@
 import { mapState } from "vuex";
 import LogoDark from "../logo-dark/LogoDark";
 import LogoLight from "../logo-light/LogoLight";
-
+import { BIconCardList, BIconCalendar4Range } from "bootstrap-vue";
 export default {
   name: "vertical-header",
   data: () => ({
@@ -84,6 +100,8 @@ export default {
   components: {
     LogoDark,
     LogoLight,
+    BIconCardList,
+    BIconCalendar4Range,
   },
   computed: {
     ...mapState(["navbarColor", "logoColor", "LayoutType"]),

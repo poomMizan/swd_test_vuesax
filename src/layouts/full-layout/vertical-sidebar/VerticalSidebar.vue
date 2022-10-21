@@ -6,7 +6,7 @@
     "
   >
     <div :class="`bg-${logoColor} navbar-header`">
-      <LogoDark />
+      <!-- <LogoDark /> -->
       <span
         class="d-block d-lg-none close-sidebar-btn"
         @click="showMobileSidebar"
@@ -29,10 +29,10 @@
       <div class="text-center px-3">
         <b-button
           target="_blank"
-          variant="info"
           block
-          href="https://www.wrappixel.com/templates/xtreme-vuesax-admin-pro/"
-          >Upgrade to Pro</b-button
+          href="#"
+          class="text-danger text-left bg-white noborder"
+          ><b-icon-arrow90deg-left></b-icon-arrow90deg-left> Logout</b-button
         >
       </div>
     </div>
@@ -40,14 +40,15 @@
 </template>
 
 <script>
-import LogoDark from "../logo-dark/LogoDark";
+// import LogoDark from "../logo-dark/LogoDark";
 import { mapState } from "vuex";
 import SidebarData from "./SidebarData";
-
+import { BIconArrow90degLeft } from "bootstrap-vue";
 export default {
   name: "VerticalSidebar",
   components: {
-    LogoDark,
+    // LogoDark,
+    BIconArrow90degLeft,
   },
   data: () => ({
     initialShow: true,
@@ -67,5 +68,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.noborder {
+  padding: 0;
+  border: none;
+  background: none;
+}
 </style>

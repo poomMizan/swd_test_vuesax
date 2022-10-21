@@ -3,13 +3,13 @@
     <!-- ---------------------------------- -->
     <!--- Vertical Header part -->
     <!-- ---------------------------------- -->
-    <VerticalSidebar />
+    <VerticalSidebar class="shadow-none" />
     <aside class="page-wrapper">
       <VerticalHeader />
-      <div class="min-height container-fluid p-4">
+      <div class="min-height container-fluid p-3">
         <router-view />
       </div>
-      <Footer />
+      <!-- <Footer /> -->
     </aside>
   </div>
 </template>
@@ -17,14 +17,14 @@
 <script>
 import VerticalHeader from "./vertical-header/VerticalHeader";
 import VerticalSidebar from "./vertical-sidebar/VerticalSidebar";
-import Footer from "./footer/Footer";
+// import Footer from "./footer/Footer";
 import { mapState } from "vuex";
 export default {
   name: "FullLayout",
   components: {
     VerticalHeader,
     VerticalSidebar,
-    Footer,
+    // Footer,
   },
   data: () => ({}),
   computed: {
@@ -35,5 +35,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
