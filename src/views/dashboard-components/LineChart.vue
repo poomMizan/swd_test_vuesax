@@ -1,58 +1,28 @@
 <script>
 import { Line } from "vue-chartjs";
-import axios from "axios";
+// import axios from "axios";
 export default {
   extends: Line,
   data() {
     return {
       gradient: null,
       gradient2: null,
-      graphDataSet: null,
-      graphLabels: null,
-      graphData: null,
+      // graphDataSet: null,
+      // graphLabels: null,
+      // graphData: null,
     };
   },
-  methods: {
-    get_graph_data() {
-      try {
-        axios
-          .get("https://swdapi.ddns.net:8090/data/ttntest")
-          .then((res) => {
-            var dts = res.data;
-            console.log("dts = ", dts);
-            var counts = {};
-            dts.forEach((dt) => {
-              const dt_str = dt.timestamp.substring(0, 10);
-              counts[dt_str] = (counts[dt_str] || 0) + 1;
-            });
-            this.graphLabels = Object.keys(counts);
-            this.graphData = Object.values(counts);
-            console.log("graph_data obj", {
-              label: this.graphLabels,
-              data: this.graphData,
-            });
-          })
-          .catch((err) => console.log("Error when connected to API ", err));
-      } catch (error) {
-        // alert(error);
-        console.log("Unable to connect to API ", error);
-      }
-    },
-  },
-  computed: {
-    graphDataComputed() {
-      console.log("computed ", this.$store.getters.getGraphData);
-      return this.$store.getters.getGraphData;
-    },
-  },
-  async beforeMount() {
-    await this.get_graph_data();
-  },
+  // computed: {
+  //   fetchGraphData() {
+  //     console.log("computed ", this.$store.getters.getGraphData);
+  //     return this.$store.getters.getGraphData;
+  //   },
+  // },
   mounted() {
     // console.log("linechart ", this.getGraphData);
-    // var graphDataSet = this.graphData;
-    // console.log("linechart ", graphDataSet);
-    // var { graphLabels, graphData } = graphDataSet;
+    var graphDataSet = this.$store.getters.getGraphData;
+    console.log("linechart ", graphDataSet);
+    var { graphLabels, graphData } = graphDataSet;
 
     // console.log("linechart ", this.graphDataSet);
     // var { graphLabels, graphData } = this.graphDataSet;
@@ -71,8 +41,8 @@ export default {
     // this.gradient2.addColorStop(0, "rgba(0, 231, 255, 0.9)");
     // this.gradient2.addColorStop(0.5, "rgba(0, 231, 255, 0.25)");
     // this.gradient2.addColorStop(1, "rgba(0, 231, 255, 0)");
-    console.log("render graph label", this.graphLabels);
-    console.log("render graph data", this.graphData);
+    console.log("render graph label", graphLabels);
+    console.log("render graph data", graphData);
     // vm.$forceUpdate();
     //or in file components
     // this.$forceUpdate();
@@ -88,16 +58,16 @@ export default {
         //   "13 July 20",
         //   "14 July 20",
         // ],
-        labels: this.graphLabels,
+        labels: graphLabels,
         datasets: [
           {
-            label: "amount of data",
+            label: "Total data",
             borderColor: "#2962ff",
             pointBackgroundColor: "white",
             borderWidth: 2,
             backgroundColor: this.gradient,
             // data: [0, 5, 6, 8, 21, 9, 8],
-            data: this.graphData,
+            data: graphData,
           },
           // {
           //   label: "Data2",

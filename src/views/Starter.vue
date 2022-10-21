@@ -156,23 +156,24 @@
               ><template #title>
                 <b-icon-graph-up></b-icon-graph-up> Graph
               </template>
-              <b-row>
-                <b-col cols="12" lg="12">
-                  <b-card class="mb-4">
-                    <h4 class="card-title">Amount of data by date</h4>
-                    <SalesSummary />
-                  </b-card>
-                </b-col>
-                <b-col cols="12" lg="12">
-                  <b-card class="mb-4">
-                    <h4 class="card-title">Amount of data by date</h4>
-                    <!-- <SalesIncome /> -->
-                  </b-card>
-                </b-col> </b-row
-            ></b-tab>
+            </b-tab>
           </b-tabs>
         </b-card>
       </div>
+      <b-row>
+        <b-col cols="12" lg="12">
+          <b-card class="mb-4">
+            <h4 class="card-title">Line chart Amount of data by date</h4>
+            <SalesSummary />
+          </b-card>
+        </b-col>
+        <b-col cols="12" lg="12">
+          <b-card class="mb-4">
+            <h4 class="card-title">Bar chart Amount of data by date</h4>
+            <SalesIncome />
+          </b-card>
+        </b-col>
+      </b-row>
       <!-- 
       <div>
         <b-tabs content-class="mt-3">
@@ -211,7 +212,7 @@
 
 <script>
 import SalesSummary from "./dashboard-components/SalesSummary";
-// import SalesIncome from "./dashboard-components/SalesIncome";
+import SalesIncome from "./dashboard-components/SalesIncome";
 import SellingProduct from "./dashboard-components/SellingProduct";
 import SellingProduct2 from "./dashboard-components/SellingProduct2";
 import {
@@ -246,17 +247,17 @@ export default {
     BIconClock,
     BIconExclamationCircle,
     SalesSummary,
-    // SalesIncome,
+    SalesIncome,
     SellingProduct,
     SellingProduct2,
     // TopCards,
   },
   computed: {
     xxx() {
-      var graphDataSet = this.$store.getters.getGraphData
-    console.log("linechart in starter", graphDataSet);
-    // var { graphLabels, graphData } = graphDataSet;
-    return graphDataSet;
+      var graphDataSet = this.$store.getters.getGraphData;
+      console.log("linechart in starter", graphDataSet);
+      // var { graphLabels, graphData } = graphDataSet;
+      return graphDataSet;
     },
   },
 };
