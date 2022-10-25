@@ -27,16 +27,8 @@ export default {
   },
   computed: {
     // graph_data() {
-    //   var counts = {};
-    //   this.$store.state.dts.forEach((dt) => {
-    //     const dt_str = dt.timestamp.substring(0, 10);
-    //     counts[dt_str] = (counts[dt_str] || 0) + 1;
-    //   });
-    //   console.log("kuykuykuy", counts);
-    //   return counts;
-    // },
-    // all_dts() {
-    //   return this.$store.state.dts;
+    //   console.log("Line chart computed parent", this.$store.getters.getGraphData);
+    //   return this.$store.getters.getGraphData;
     // },
   },
   mounted() {

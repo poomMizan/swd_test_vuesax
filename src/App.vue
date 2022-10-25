@@ -11,7 +11,8 @@ export default {
   beforeCreate() {
     // alert('fetchDTS');
     this.$store.dispatch("fetchDTS");
-    this.$store.dispatch("fetchGraphData");
+    // this.$store.dispatch("fetchGraphData");
+    // this.$store.dispatch("fetchGraphData");
   },
 };
 </script>

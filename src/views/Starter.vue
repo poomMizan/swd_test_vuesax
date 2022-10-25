@@ -1,233 +1,63 @@
 <template>
   <div>
-    <!-- ----------------------------------------------- -->
-    <!-- top cards -->
-    <!-- ----------------------------------------------- -->
+    <TopCards />
 
-    <b-row>
-      <b-col cols="12" md="6" lg="2">
-        <b-card class="shadow p-1">
-          <h6 class="card-title font-weight-light">
-            <b-icon-exclamation-circle></b-icon-exclamation-circle> Upcoming
-            Tasks
-          </h6>
-
-          <b-card-text class="mb-2 text-center h2 font-weight-light"
-            >1</b-card-text
-          >
-        </b-card>
-      </b-col>
-      <b-col cols="12" md="6" lg="2">
-        <b-card class="shadow p-1">
-          <h6 class="card-title font-weight-light">
-            <b-icon-alarm></b-icon-alarm> Late Tasks
-          </h6>
-          <b-card-text class="mb-2 text-center h2 font-weight-light"
-            >5</b-card-text
-          >
-        </b-card>
-      </b-col>
-      <b-col cols="12" md="6" lg="2">
-        <b-card class="shadow p-1">
-          <h6 class="card-title font-weight-light">
-            <b-icon-arrow-left-right></b-icon-arrow-left-right> Open Tasks
-          </h6>
-          <b-card-text class="mb-2 text-center h2 font-weight-light"
-            >0</b-card-text
-          >
-        </b-card>
-      </b-col>
-      <b-col cols="12" md="6" lg="2">
-        <b-card class="shadow p-1">
-          <h6 class="card-title font-weight-light lg-dark">
-            <b-icon-check2></b-icon-check2> Completed Tasks
-          </h6>
-          <b-card-text class="mb-2 text-center h2 font-weight-light"
-            >1</b-card-text
-          >
-        </b-card>
-      </b-col>
-      <b-col cols="12" md="6" lg="2">
-        <b-card class="shadow p-1">
-          <h6 class="card-title font-weight-light">
-            <b-icon-alarm></b-icon-alarm> Time Spent
-          </h6>
-          <b-card-text class="mb-2 text-center h2 font-weight-light"
-            >2</b-card-text
-          >
-        </b-card>
-      </b-col>
-      <b-col cols="12" md="6" lg="2">
-        <b-card class="shadow p-1">
-          <h6 class="card-title font-weight-light">
-            <b-icon-clock></b-icon-clock> Time Spent
-          </h6>
-          <b-card-text class="mb-2 text-center h2 font-weight-light"
-            >24 hr</b-card-text
-          >
-        </b-card>
-      </b-col>
-    </b-row>
-
-    <!-- ----------------------------------------------- -->
-    <!-- end top cards -->
-    <!-- ----------------------------------------------- -->
-
-    <!-- ----------------------------------------------- -->
-    <!-- top selling products -->
-    <!-- ----------------------------------------------- -->
     <b-card no-body class="mt-4">
-      <b-card-title class="bg-success p-3">
-        <h3 class="text-white font-weight-light">
-          <b-icon-card-list style="font-size:1.1em;"></b-icon-card-list>
-          Assignment of Open Work Orders
-        </h3>
+      <b-card-title
+        class="bg-swd-green-bar p-3 text-white font-weight-light h3"
+      >
+        <!-- <h3 class="text-white font-weight-light"> -->
+        <b-icon-card-list style="font-size:1.1em;"></b-icon-card-list>
+        Assignment of Open Work Orders
       </b-card-title>
 
-      <!-- <div class="btn-grp ml-3 mt-3"> -->
-      <!-- <b-button
-          variant="secondary rounded-pill"
-          @click="
-            show_list = true;
-            show_graph = false;
-            show_calender = false;
-          "
-          >List</b-button
-        > -->
-      <!-- <b-button
-          size="lg"
-          pill
-          variant="info"
-          @click="
-            show_list = true;
-            show_graph = false;
-            show_calender = false;
-          "
-          ><b-icon-list-stars />List</b-button
-        > -->
-      <!-- <b-button
-          size="lg"
-          pill
-          variant="info"
-          @click="
-            show_calendar = true;
-            show_list = false;
-            show_graph = false;
-          "
-          ><b-icon-calendar4-range></b-icon-calendar4-range> Calendar</b-button
-        >
-        <b-button size="lg" pill variant="info"
-          ><b-icon-people-fill></b-icon-people-fill> User</b-button
-        > -->
-      <!-- <b-button
-          class="text-light"
-          pill
-          variant="info"
-          size="lg"
-          @click="
-            show_graph = true;
-            show_list = false;
-            show_calender = false;
-          "
-          ><b-icon-graph-up></b-icon-graph-up> Graph</b-button
-        > -->
-      <!-- </div> -->
-
       <div>
-        <b-card no-body>
-          <b-tabs pills card class="bg-white">
-            <b-tab active
-              ><template #title>
-                <b-icon-list-stars></b-icon-list-stars> List </template
-              ><SellingProduct />
-            </b-tab>
-            <b-tab
-              ><template #title>
-                <b-icon-calendar4-range></b-icon-calendar4-range>
-                Calendar</template
-              ><SellingProduct2
-            /></b-tab>
-            <b-tab
-              ><template #title>
-                <b-icon-people-fill></b-icon-people-fill> User
-              </template></b-tab
-            >
-            <b-tab
-              ><template #title>
-                <b-icon-graph-up></b-icon-graph-up> Graph
-              </template>
-            </b-tab>
-          </b-tabs>
-        </b-card>
-      </div>
-      <b-row>
-        <b-col cols="12" lg="12">
-          <b-card class="mb-4">
-            <h4 class="card-title">Line chart Amount of data by date</h4>
-            <SalesSummary />
-          </b-card>
-        </b-col>
-        <b-col cols="12" lg="12">
-          <b-card class="mb-4">
-            <h4 class="card-title">Bar chart Amount of data by date</h4>
-            <SalesIncome />
-          </b-card>
-        </b-col>
-      </b-row>
-      <!-- 
-      <div>
-        <b-tabs content-class="mt-3">
-          <b-tab title="First" active><SellingProduct /></b-tab>
-          <b-tab title="Second"><SellingProduct2 /></b-tab>
-          <b-tab title="Disabled">
-            <b-row>
-              <b-col cols="12" lg="12">
-                <b-card class="mb-4">
-                  <h4 class="card-title">Amount of data by date</h4>
-                  <SalesSummary />
-                </b-card>
-              </b-col>
-              <b-col cols="12" lg="12">
-                <b-card class="mb-4">
-                  <h4 class="card-title">Amount of data by date</h4>
-                  <SalesIncome />
-                </b-card>
-              </b-col> </b-row
-          ></b-tab>
+        <b-tabs no-border class="ml-3">
+          <b-tab active title-link-class="tab-link-class"
+            ><template #title>
+              <b-icon-list-stars></b-icon-list-stars> List
+            </template>
+            <ListTable />
+          </b-tab>
+          <b-tab title-link-class="tab-link-class"
+            ><template #title variant="success">
+              <b-icon-calendar4-range></b-icon-calendar4-range>
+              Calendar
+            </template>
+            <CalendarTable />
+          </b-tab>
+          <b-tab title-link-class="tab-link-class"
+            ><template #title>
+              <b-icon-people-fill></b-icon-people-fill> User
+            </template>
+          </b-tab>
+          <b-tab title-link-class="tab-link-class" v-b-modal.modal-1
+            ><template #title>
+              <b-icon-graph-up></b-icon-graph-up>
+              Graph
+            </template>
+          </b-tab>
         </b-tabs>
-      </div> -->
+      </div>
     </b-card>
-    <!-- ----------------------------------------------- -->
-    <!-- end top selling products -->
-    <!-- ----------------------------------------------- -->
-    <!-- ----------------------------------------------- -->
-    <!-- cards row -->
-    <!-- ----------------------------------------------- -->
-    <!-- <TopCards /> -->
-    <!-- ----------------------------------------------- -->
-    <!-- end cards row -->
-    <!-- ----------------------------------------------- -->
+
+    <GraphPage />
   </div>
 </template>
 
 <script>
-import SalesSummary from "./dashboard-components/SalesSummary";
-import SalesIncome from "./dashboard-components/SalesIncome";
-import SellingProduct from "./dashboard-components/SellingProduct";
-import SellingProduct2 from "./dashboard-components/SellingProduct2";
+import ListTable from "./dashboard-components/ListTable";
+import CalendarTable from "./dashboard-components/CalendarTable";
+import TopCards from "./dashboard-components/TopCards";
+import GraphPage from "./dashboard-components/GraphPage";
 import {
   BIconListStars,
   BIconCalendar4Range,
   BIconPeopleFill,
   BIconGraphUp,
   BIconCardList,
-  BIconAlarm,
-  BIconArrowLeftRight,
-  BIconCheck2,
-  BIconClock,
-  BIconExclamationCircle,
 } from "bootstrap-vue";
-// import TopCards from "./dashboard-components/TopCards";
+
 export default {
   name: "Starter",
   data: () => ({
@@ -241,29 +71,27 @@ export default {
     BIconPeopleFill,
     BIconGraphUp,
     BIconCardList,
-    BIconAlarm,
-    BIconArrowLeftRight,
-    BIconCheck2,
-    BIconClock,
-    BIconExclamationCircle,
-    SalesSummary,
-    SalesIncome,
-    SellingProduct,
-    SellingProduct2,
-    // TopCards,
+    ListTable,
+    CalendarTable,
+    TopCards,
+    GraphPage,
   },
-  computed: {
-    xxx() {
-      var graphDataSet = this.$store.getters.getGraphData;
-      console.log("linechart in starter", graphDataSet);
-      // var { graphLabels, graphData } = graphDataSet;
-      return graphDataSet;
-    },
-  },
+  beforeCreate() {},
 };
 </script>
 <style>
-.btnn {
-  background-color: linear-gradient(to right, red, yellow);
+.tab-link-class {
+  background-color: #c7f1cb !important;
+  color: black !important;
+  padding: 10px 20px !important;
+  border-radius: 25px !important;
+  margin: 1px !important;
+}
+.nav-tabs {
+  border-bottom: none !important;
+}
+.card-swd {
+  background-color: red;
+  background-size: calc(100% - 100px) calc(100% - 100px);
 }
 </style>

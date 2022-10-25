@@ -1,62 +1,49 @@
 <template>
-  <b-row>
-    <b-col cols="12" md="4" class="d-flex align-items-stretch">
-      <b-card
-        title="Card Title"
-        img-src="@/assets/images/big/img1.jpg"
-        img-alt="Image"
-        img-top
-        tag="article"
-        class="mb-2"
-      >
-        <b-card-text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </b-card-text>
+  <b-card-group deck class="px-2">
+    <OneCard header="Upcoming Tasks" text="1" color="swdgreenbar">
+      <b-icon-exclamation-circle />
+    </OneCard>
 
-        <b-button href="#" variant="primary">Learn More</b-button>
-      </b-card>
-    </b-col>
-    <b-col cols="12" md="4" class="d-flex align-items-stretch">
-      <b-card
-        title="Card Title"
-        img-src="@/assets/images/big/img2.jpg"
-        img-alt="Image"
-        img-top
-        tag="article"
-        class="mb-2"
-      >
-        <b-card-text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </b-card-text>
+    <OneCard header="Late Tasks" text="5" color="warning">
+      <b-icon-alarm />
+    </OneCard>
 
-        <b-button href="#" variant="primary">Learn More</b-button>
-      </b-card>
-    </b-col>
-    <b-col cols="12" md="4" class="d-flex align-items-stretch">
-      <b-card
-        title="Card Title"
-        img-src="@/assets/images/big/img3.jpg"
-        img-alt="Image"
-        img-top
-        tag="article"
-        class="mb-2"
-      >
-        <b-card-text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </b-card-text>
+    <OneCard header="Open Tasks" text="0" color="swdgreenbar">
+      <b-icon-arrow-left-right />
+    </OneCard>
 
-        <b-button href="#" variant="primary">Learn More</b-button>
-      </b-card>
-    </b-col>
-  </b-row>
+    <OneCard header="Completed Tasks" text="1" color="swdgreenbar">
+      <b-icon-check2 />
+    </OneCard>
+
+    <OneCard header="Overdue Tasks" text="2" color="danger">
+      <b-icon-alarm />
+    </OneCard>
+
+    <OneCard header="Time Spent" text="24">
+      <b-icon-clock />
+    </OneCard>
+  </b-card-group>
 </template>
 
 <script>
+import OneCard from "./OneCard.vue";
+import {
+  BIconAlarm,
+  BIconArrowLeftRight,
+  BIconCheck2,
+  BIconClock,
+  BIconExclamationCircle,
+} from "bootstrap-vue";
 export default {
   name: "TopCards",
-  components: {},
+  components: {
+    OneCard,
+    BIconAlarm,
+    BIconArrowLeftRight,
+    BIconCheck2,
+    BIconClock,
+    BIconExclamationCircle,
+  },
 };
 </script>

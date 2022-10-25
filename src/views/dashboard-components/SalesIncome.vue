@@ -14,10 +14,11 @@ export default {
   components: {
     BarChart,
   },
-//   computed: {
-//     graphData() {
-//       return this.$store.getters.getGraphData;
-//     },
-//   },
+  computed: {
+    // graph_data() {
+    //   console.log("bar chart computed parent", this.$store.getters.getGraphData);
+    //   return this.$store.getters.getGraphData;
+    // },
+  },
 };
 </script>

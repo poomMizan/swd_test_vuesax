@@ -7,81 +7,117 @@ export default {
     return {
       gradient: null,
       gradient2: null,
-      // graphDataSet: null,
-      // graphLabels: null,
-      // graphData: null,
+      gradient3: null,
+      labels: [],
+      total_data: [],
+      data_1: [],
+      data_2: [],
     };
   },
-  // computed: {
-  //   fetchGraphData() {
-  //     console.log("computed ", this.$store.getters.getGraphData);
-  //     return this.$store.getters.getGraphData;
-  //   },
-  // },
+  props: ["chardLoaded"],
+  methods: {
+    fetchGraphData() {
+      // console.log(
+      //   "method after watch get-graph-data ",
+      //   this.$store.getters.getGraphData
+      // );
+
+      const graph_dts = this.$store.getters.getGraphData;
+
+      graph_dts.forEach((dt) => {
+        this.labels.push(dt.date);
+        this.data_1.push(dt.data);
+        this.data_2.push(dt.data_2);
+        this.total_data.push(dt.total_data);
+      });
+
+      // this._data._chart.destroy();
+      this.gradient = this.$refs.canvas
+        .getContext("2d")
+        .createLinearGradient(0, 0, 0, 450);
+      this.gradient2 = this.$refs.canvas
+        .getContext("2d")
+        .createLinearGradient(0, 0, 0, 450);
+      this.gradient3 = this.$refs.canvas
+        .getContext("2d")
+        .createLinearGradient(0, 0, 0, 450);
+
+      this.gradient.addColorStop(0, "rgba(41, 98, 255, 0.5)");
+      this.gradient.addColorStop(0.5, "rgba(41, 98, 255, 0.25)");
+      this.gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+
+      this.gradient2.addColorStop(0, "rgba(0, 231, 255, 0.9)");
+      this.gradient2.addColorStop(0.5, "rgba(0, 231, 255, 0.25)");
+      this.gradient2.addColorStop(1, "rgba(0, 231, 255, 0)");
+
+      this.gradient3.addColorStop(0, "rgba(252, 48, 3, 0.9)");
+      this.gradient3.addColorStop(0.5, "rgba(252, 48, 3, 0.25)");
+      this.gradient3.addColorStop(1, "rgba(0, 231, 255, 0)");
+      this.renderChart(
+        {
+          labels: this.labels,
+          datasets: [
+            // {
+            //   label: "data",
+            //   borderColor: "##fc6b03",
+            //   pointBackgroundColor: "white",
+            //   borderWidth: 2,
+            //   backgroundColor: this.gradient3,
+            //   data: this.total_data,
+            // },
+            {
+              label: "data",
+              borderColor: "#2962ff",
+              pointBackgroundColor: "white",
+              borderWidth: 2,
+              backgroundColor: this.gradient,
+              data: this.data_1,
+            },
+            {
+              label: "Data 2",
+              borderColor: "#fc6b03",
+              pointBackgroundColor: "white",
+              borderWidth: 2,
+              backgroundColor: this.gradient3,
+              data: this.data_2,
+            },
+          ],
+        },
+        { responsive: true, maintainAspectRatio: false }
+      );
+    },
+  },
+  watch: {
+    chardLoaded() {
+      console.log("watched !!!");
+      this.fetchGraphData();
+    },
+  },
   mounted() {
-    // console.log("linechart ", this.getGraphData);
-    var graphDataSet = this.$store.getters.getGraphData;
-    console.log("linechart ", graphDataSet);
-    var { graphLabels, graphData } = graphDataSet;
-
-    // console.log("linechart ", this.graphDataSet);
-    // var { graphLabels, graphData } = this.graphDataSet;
-
-    this.gradient = this.$refs.canvas
-      .getContext("2d")
-      .createLinearGradient(0, 0, 0, 450);
-    // this.gradient2 = this.$refs.canvas
-    //   .getContext("2d")
-    //   .createLinearGradient(0, 0, 0, 450);
-
-    this.gradient.addColorStop(0, "rgba(41, 98, 255, 0.5)");
-    this.gradient.addColorStop(0.5, "rgba(41, 98, 255, 0.25)");
-    this.gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
-
-    // this.gradient2.addColorStop(0, "rgba(0, 231, 255, 0.9)");
-    // this.gradient2.addColorStop(0.5, "rgba(0, 231, 255, 0.25)");
-    // this.gradient2.addColorStop(1, "rgba(0, 231, 255, 0)");
-    console.log("render graph label", graphLabels);
-    console.log("render graph data", graphData);
-    // vm.$forceUpdate();
-    //or in file components
-    // this.$forceUpdate();
-    // this.get_graph_data();
-    this.renderChart(
-      {
-        // labels: [
-        //   "8 July 20",
-        //   "9 July 20",
-        //   "10 July 20",
-        //   "11 July 20",
-        //   "12 July 20",
-        //   "13 July 20",
-        //   "14 July 20",
-        // ],
-        labels: graphLabels,
-        datasets: [
-          {
-            label: "Total data",
-            borderColor: "#2962ff",
-            pointBackgroundColor: "white",
-            borderWidth: 2,
-            backgroundColor: this.gradient,
-            // data: [0, 5, 6, 8, 21, 9, 8],
-            data: graphData,
-          },
-          // {
-          //   label: "Data2",
-          //   borderColor: "#05CBE1",
-          //   pointBackgroundColor: "white",
-          //   borderWidth: 2,
-          //   backgroundColor: this.gradient2,
-          //   data: [0, 3, 1, 2, 8, 1, 5],
-          // },
-        ],
-      },
-      { responsive: true, maintainAspectRatio: false }
-    );
-    // this.get_graph_data();
+    // this.renderChart(
+    //   {
+    //     labels: this.labels,
+    //     datasets: [
+    //       {
+    //         label: "data",
+    //         borderColor: "#2962ff",
+    //         pointBackgroundColor: "white",
+    //         borderWidth: 2,
+    //         backgroundColor: this.gradient,
+    //         data: this.data_1,
+    //       },
+    //       {
+    //         label: "Data 2",
+    //         borderColor: "#05CBE1",
+    //         pointBackgroundColor: "white",
+    //         borderWidth: 2,
+    //         backgroundColor: this.gradient2,
+    //         data: this.data_2,
+    //       },
+    //     ],
+    //   },
+    //   { responsive: true, maintainAspectRatio: false }
+    // );
   },
 };
 </script>

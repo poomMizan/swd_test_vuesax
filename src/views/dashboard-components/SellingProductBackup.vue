@@ -109,7 +109,7 @@
 <script>
 
 export default {
-	name:"SellingProduct",
+	name:"SellingProductBackUp",
     components: {}
 }    
 </script>

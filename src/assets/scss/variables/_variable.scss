@@ -30,6 +30,10 @@ $light: $gray-100 !default;
 $dark: $gray-900 !default;
 $orange: #fb8c00 !default;
 
+$swdgreenbar: #5cc141 !default; // rgb(92,193,65)
+$swdgreybar: #666666 !default; // rgb(102,102,102)
+$swdgreenbtn: #c7f1cb !default; // rgb(199,241,203) 
+
 $light-primary: #d5dffd !default;
 $light-info: #e1f0ff !default;
 $light-warning: #fbeccd !default;
@@ -57,6 +61,11 @@ $theme-colors: map-merge(
     "light-success": $light-success,
     "light-secondary": $light-secondary,
     "light-cyan": $light-cyan,
+
+    // custom
+    "swd-green-bar": #5cc141,
+    "swd-grey-bar": #666666,
+    "swd-green-btn": #c7f1cb,
   ),
   $theme-colors
 );

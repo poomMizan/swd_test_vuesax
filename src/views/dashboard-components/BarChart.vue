@@ -10,11 +10,21 @@ export default {
       graphDataSet: null,
     };
   },
-
+  props: {
+    dts: Array,
+  },
+  computed: {
+    graph_data() {
+      console.log("bar chart computed", this.$store.getters.getGraphData);
+      return this.$store.state.graphData;
+    },
+  },
   mounted() {
-    var graphDataSet = this.$store.getters.getGraphData;
-    console.log("linechart ", graphDataSet);
-    var { graphLabels, graphData } = graphDataSet;
+    let graphLabels = [];
+    let graphData = [];
+
+    console.log("barchart mounted ", this.$store.getters.getGraphData);
+    // var { graphLabels, graphData } = graphDataSet;
     this.renderChart(
       {
         // labels: [
