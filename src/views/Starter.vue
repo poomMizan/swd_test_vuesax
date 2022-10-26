@@ -26,7 +26,7 @@
             </template>
             <CalendarTable />
           </b-tab>
-          <b-tab title-link-class="tab-link-class"
+          <b-tab title-link-class="tab-link-class" disabled
             ><template #title>
               <b-icon-people-fill></b-icon-people-fill> User
             </template>

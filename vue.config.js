@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: "/swd-test/",
+  // publicPath: "/swd-test/",
 };

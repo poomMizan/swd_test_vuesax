@@ -5,44 +5,32 @@ export default {
   extends: Bar,
   data() {
     return {
-      // graphLabels: null,
-      // graphData: null,
-      graphDataSet: null,
+      labels: [],
+      total_data: [],
+      // data_1: [],
+      // data_2: [],
     };
   },
-  props: {
-    dts: Array,
-  },
-  computed: {
-    graph_data() {
-      console.log("bar chart computed", this.$store.getters.getGraphData);
-      return this.$store.state.graphData;
-    },
-  },
-  mounted() {
-    let graphLabels = [];
-    let graphData = [];
+  props: ["chardLoaded"],
+  methods: {
+    fetchGraphData() {
+      const graph_dts = this.$store.getters.getGraphData;
 
-    console.log("barchart mounted ", this.$store.getters.getGraphData);
-    // var { graphLabels, graphData } = graphDataSet;
-    this.renderChart(
+      graph_dts.forEach((dt) => {
+        this.labels.push(dt.date);
+        // this.data_1.push(dt.data);
+        // this.data_2.push(dt.data_2);
+        this.total_data.push(dt.total_data);
+      });
+
+      this.renderChart(
       {
-        // labels: [
-        //   "January",
-        //   "February",
-        //   "March",
-        //   "April",
-        //   "May",
-        //   "June",
-        //   "July"
-        // ],
-        labels: graphLabels,
+        labels: this.labels,
         datasets: [
           {
             label: "Total data",
             backgroundColor: "#2962ff",
-            // data: [2000, 40000, 20000, 39000, 10000, 40000, 69000],
-            data: graphData,
+            data: this.total_data,
           },
         ],
       },
@@ -52,12 +40,19 @@ export default {
         scales: {
           xAxes: [
             {
-              barThickness: 7,
+              barThickness: 14,
             },
           ],
         },
       }
     );
+    },
+  },
+  watch: {
+    chardLoaded() {
+      // console.log("watched !!!");
+      this.fetchGraphData();
+    },
   },
 };
 </script>
